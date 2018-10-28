@@ -1,0 +1,22 @@
+{
+  "name": "double-the-donation-assignment",
+  "version": "0.0.1",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "shadow-cljs watch app",
+    "release": "shadow-cljs release app",
+    "clean": "rm -rf target && rm -rf public/js"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "shadow-cljs": "^2.6.19"
+  },
+  "dependencies": {
+    "@blueprintjs/core": "^3.7.0",
+    "create-react-class": "^15.6.3",
+    "react": "^16.6.0",
+    "react-dom": "^16.6.0"
+  }
+}
