@@ -7,6 +7,7 @@
 
  :builds
  {:app {:target :browser
+        :compiler-options {:infer-externs :auto}
         :output-dir "app/public/assets/js"
         :asset-path "public/assets/js"
         :modules {:main {:init-fn app.main/init!}}
@@ -14,6 +15,7 @@
                    :http-root "app"
                    :http-port 8080}}
   :server {:target :node-script
+           :compiler-options {:infer-externs :auto}
            :main server.main/init!
            :output-to "server/index.js"
            :devtools {:before-load-async server.main/stop

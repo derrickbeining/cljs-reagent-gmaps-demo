@@ -9,7 +9,7 @@
     "build:dev": "shadow-cljs compile app server",
     "build:prod": "shadow-cljs release app server",
     "serve:dev": "nodemon -x 'node -r dotenv/config server dotenv_config_path=./.env/development'",
-    "serve:prod": "nodemon -x 'node -r dotenv/config server dotenv_config_path=./.env/production'",
+    "serve:prod": "node -r dotenv/config server dotenv_config_path=./.env/production",
     "clean": "rm -rf app/public/assets/js/* && rm -rf server/*"
   },
   "author": "",

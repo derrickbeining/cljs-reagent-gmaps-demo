@@ -1,16 +1,17 @@
 (ns server.route-handlers
   (:require ["ramda" :as R]
+            ["express" :as Express]
             ["google-polyline" :as poly]
             [server.gmaps-client :as gmaps]
             ["path" :as path]))
 
-(defn handle-get-secrets [req res]
+(defn handle-get-secrets [^js req ^js res]
   (.send res #js{:gmaps_key js/process.env.GMAPS_API_KEY}))
 
-(defn handle-get-index-html [req res]
+(defn handle-get-index-html [^js req ^js res]
   (.sendFile res (path/join js/__dirname ".." "app" "index.html")))
 
-(defn handle-post-directions [req res next]
+(defn handle-post-directions [^js req ^js res next]
   (let [origin (R/path #js["body" "origin"] req)
         destination (R/path #js["body" "destination"] req)]
     (-> (js/Promise.resolve #js[origin destination])
@@ -32,5 +33,5 @@
                                                              (R/chain (R/zipObj #js["lat" "lng"]))))})))
 
         (.then #(.json res %))
-        (.catch (R/cond #js[#js[(R/pathEq #js["json" "status"] "ZERO_RESULTS") #(.sendStatus res 404)]
-                            #js[(R/always true) #(.sendStatus res 404)]])))))
+        (.catch (R/cond #js[#js[#(R/pathEq #js["json" "status"] "ZERO_RESULTS") #(.sendStatus res 404)]
+                            #js[#(R/always true) #(.sendStatus res 404)]])))))
