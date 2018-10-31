@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "npm run build:prod && npm run serve:prod",
+    "start": "NODE_ENV=production; npm run build:prod && npm run serve:prod",
     "dev": "shadow-cljs watch server app",
     "build:dev": "shadow-cljs compile app server",
     "build:prod": "shadow-cljs release app server",

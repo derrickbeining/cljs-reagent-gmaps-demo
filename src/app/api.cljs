@@ -14,5 +14,4 @@
       (.post (str "/directions")
              #js{:origin origin
                  :destination destination})
-      (.then (R/prop "data"))
-      (.catch #(js/console.error %))))
+      (.then (R/prop "data"))))
